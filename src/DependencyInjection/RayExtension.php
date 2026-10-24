@@ -15,12 +15,14 @@ final class RayExtension extends Extension
     {
         $config = $this->processConfiguration(new Configuration, $configs);
 
-        foreach (['token', 'private_key', 'url', 'environment', 'release', 'sample_rate', 'traces_sample_rate', 'send_default_pii', 'send_default_user', 'ignore_exceptions', 'ignore_transactions', 'options', 'inventory'] as $key) {
+        foreach (['token', 'private_key', 'url', 'environment', 'release', 'sample_rate', 'traces_sample_rate', 'send_default_pii', 'send_default_user', 'ignore_exceptions', 'ignore_transactions', 'options', 'inventory', 'security'] as $key) {
             $container->setParameter('ray.'.$key, $config[$key]);
         }
 
-        foreach ($config['inventory'] as $key => $value) {
-            $container->setParameter('ray.inventory.'.$key, $value);
+        foreach (['inventory', 'security'] as $section) {
+            foreach ($config[$section] as $key => $value) {
+                $container->setParameter('ray.'.$section.'.'.$key, $value);
+            }
         }
 
         (new PhpFileLoader($container, new FileLocator(__DIR__.'/../../config')))->load('services.php');

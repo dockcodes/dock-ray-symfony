@@ -43,8 +43,8 @@
   "minimum-stability": "stable",
   "prefer-stable": true,
   "suggest": {
-    "symfony/scheduler": "Automatic hourly inventory schedule (requires a running Messenger worker)",
-    "symfony/messenger": "Consume the automatic DockRay inventory schedule"
+    "symfony/scheduler": "Automatic inventory and security report schedules (requires a running Messenger worker)",
+    "symfony/messenger": "Consume the automatic DockRay inventory and security report schedules"
   },
   "scripts": {
     "test": "phpunit"

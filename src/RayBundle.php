@@ -10,7 +10,7 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 class RayBundle extends Bundle
 {
-    public const VERSION = '1.1.0';
+    public const VERSION = '1.2.0';
 
     public function getContainerExtension(): ?ExtensionInterface
     {
